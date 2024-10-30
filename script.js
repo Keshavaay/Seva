@@ -18,24 +18,55 @@ const itemTotals = {
     '1_corporate': 0
 };
 
+// Stores calculation history for each user session
+let calculationHistory = {};
+
+// Initialize user session
+function startSession() {
+    const username = document.getElementById("username").value.trim();
+    if (!username) {
+        alert("Please enter your name to start the session.");
+        return;
+    }
+    calculationHistory[username] = {};
+    document.getElementById("user-history").style.display = "block";
+    alert(`Welcome, ${username}!`);
+}
+
+// Function to calculate item cost and save to history
 function calculateItem(type) {
     const quantityElement = document.getElementById(`quantity_${type}`);
     const quantity = parseInt(quantityElement.value);
 
-    if (isNaN(quantity) || quantity < 1) {
+    if (isNaN(quantity) || quantity < 0) {
         alert("Please enter a valid quantity.");
         return;
     }
 
-    // Calculate total cost for this item
     const pricePerBox = prices[type];
     const totalCost = pricePerBox * quantity;
 
-    // Update the individual item total
     itemTotals[type] = totalCost;
 
-    // Display the result
+    // Update displayed result
     document.getElementById(`result_${type}`).innerText = "Total Cost: ₹" + totalCost;
+
+    // Record calculation in history
+    const username = document.getElementById("username").value.trim();
+    if (!calculationHistory[username]) calculationHistory[username] = {};
+    if (!calculationHistory[username][type]) calculationHistory[username][type] = [];
+    calculationHistory[username][type].push(`Quantity: ${quantity}, Cost: ₹${totalCost}`);
+
+    // Update history display
+    updateHistoryDisplay(type);
+}
+
+// Function to update displayed history for an item
+function updateHistoryDisplay(type) {
+    const username = document.getElementById("username").value.trim();
+    const historyDiv = document.getElementById(`history_${type}`);
+    const historyData = calculationHistory[username][type] || [];
+    historyDiv.innerHTML = "<h4>History:</h4>" + historyData.map(entry => `<p>${entry}</p>`).join("");
 }
 
 // Calculate and display the grand total of all items
