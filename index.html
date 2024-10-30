@@ -9,64 +9,72 @@
 <body>
     <div class="container">
         <h2>Kaju Katri Price Calculator</h2>
+
+        <!-- User name input -->
+        <label for="username">Enter Your Name:</label>
+        <input type="text" id="username" placeholder="Your name" required>
+        <button onclick="startSession()">Start Session</button>
         
-        <!-- Calculator for 1/4 kg Regular -->
-        <div class="calculator">
-            <h3>1/4 kg Regular</h3>
-            <label for="quantity_1_4_regular">Enter Quantity:</label>
-            <input type="number" id="quantity_1_4_regular" min="1" placeholder="Enter quantity" required>
-            <button onclick="calculateItem('1_4_regular')">Calculate</button>
-            <div id="result_1_4_regular">Total Cost: ₹0</div>
-        </div>
+        <div id="user-history" style="display:none;">
+            <!-- Calculator for each item section -->
+            <div class="calculator">
+                <h3>1/4 kg Regular</h3>
+                <label for="quantity_1_4_regular">Enter Quantity:</label>
+                <input type="number" id="quantity_1_4_regular" min="1" placeholder="Enter quantity" required>
+                <button onclick="calculateItem('1_4_regular')">Calculate</button>
+                <div id="result_1_4_regular">Total Cost: ₹0</div>
+                <div id="history_1_4_regular" class="history"></div>
+            </div>
 
-        <!-- Calculator for 1/2 kg Regular -->
-        <div class="calculator">
-            <h3>1/2 kg Regular</h3>
-            <label for="quantity_1_2_regular">Enter Quantity:</label>
-            <input type="number" id="quantity_1_2_regular" min="1" placeholder="Enter quantity" required>
-            <button onclick="calculateItem('1_2_regular')">Calculate</button>
-            <div id="result_1_2_regular">Total Cost: ₹0</div>
-        </div>
+            <div class="calculator">
+                <h3>1/2 kg Regular</h3>
+                <label for="quantity_1_2_regular">Enter Quantity:</label>
+                <input type="number" id="quantity_1_2_regular" min="1" placeholder="Enter quantity" required>
+                <button onclick="calculateItem('1_2_regular')">Calculate</button>
+                <div id="result_1_2_regular">Total Cost: ₹0</div>
+                <div id="history_1_2_regular" class="history"></div>
+            </div>
 
-        <!-- Calculator for 1 kg Regular -->
-        <div class="calculator">
-            <h3>1 kg Regular</h3>
-            <label for="quantity_1_regular">Enter Quantity:</label>
-            <input type="number" id="quantity_1_regular" min="1" placeholder="Enter quantity" required>
-            <button onclick="calculateItem('1_regular')">Calculate</button>
-            <div id="result_1_regular">Total Cost: ₹0</div>
-        </div>
+            <div class="calculator">
+                <h3>1 kg Regular</h3>
+                <label for="quantity_1_regular">Enter Quantity:</label>
+                <input type="number" id="quantity_1_regular" min="1" placeholder="Enter quantity" required>
+                <button onclick="calculateItem('1_regular')">Calculate</button>
+                <div id="result_1_regular">Total Cost: ₹0</div>
+                <div id="history_1_regular" class="history"></div>
+            </div>
 
-        <!-- Calculator for 1/4 kg Corporate -->
-        <div class="calculator">
-            <h3>1/4 kg Corporate</h3>
-            <label for="quantity_1_4_corporate">Enter Quantity:</label>
-            <input type="number" id="quantity_1_4_corporate" min="1" placeholder="Enter quantity" required>
-            <button onclick="calculateItem('1_4_corporate')">Calculate</button>
-            <div id="result_1_4_corporate">Total Cost: ₹0</div>
-        </div>
+            <div class="calculator">
+                <h3>1/4 kg Corporate</h3>
+                <label for="quantity_1_4_corporate">Enter Quantity:</label>
+                <input type="number" id="quantity_1_4_corporate" min="1" placeholder="Enter quantity" required>
+                <button onclick="calculateItem('1_4_corporate')">Calculate</button>
+                <div id="result_1_4_corporate">Total Cost: ₹0</div>
+                <div id="history_1_4_corporate" class="history"></div>
+            </div>
 
-        <!-- Calculator for 1/2 kg Corporate -->
-        <div class="calculator">
-            <h3>1/2 kg Corporate</h3>
-            <label for="quantity_1_2_corporate">Enter Quantity:</label>
-            <input type="number" id="quantity_1_2_corporate" min="1" placeholder="Enter quantity" required>
-            <button onclick="calculateItem('1_2_corporate')">Calculate</button>
-            <div id="result_1_2_corporate">Total Cost: ₹0</div>
-        </div>
+            <div class="calculator">
+                <h3>1/2 kg Corporate</h3>
+                <label for="quantity_1_2_corporate">Enter Quantity:</label>
+                <input type="number" id="quantity_1_2_corporate" min="1" placeholder="Enter quantity" required>
+                <button onclick="calculateItem('1_2_corporate')">Calculate</button>
+                <div id="result_1_2_corporate">Total Cost: ₹0</div>
+                <div id="history_1_2_corporate" class="history"></div>
+            </div>
 
-        <!-- Calculator for 1 kg Corporate -->
-        <div class="calculator">
-            <h3>1 kg Corporate</h3>
-            <label for="quantity_1_corporate">Enter Quantity:</label>
-            <input type="number" id="quantity_1_corporate" min="1" placeholder="Enter quantity" required>
-            <button onclick="calculateItem('1_corporate')">Calculate</button>
-            <div id="result_1_corporate">Total Cost: ₹0</div>
-        </div>
+            <div class="calculator">
+                <h3>1 kg Corporate</h3>
+                <label for="quantity_1_corporate">Enter Quantity:</label>
+                <input type="number" id="quantity_1_corporate" min="1" placeholder="Enter quantity" required>
+                <button onclick="calculateItem('1_corporate')">Calculate</button>
+                <div id="result_1_corporate">Total Cost: ₹0</div>
+                <div id="history_1_corporate" class="history"></div>
+            </div>
 
-        <!-- Totalify Button and Grand Total Display -->
-        <button class="totalify-btn" onclick="totalify()">Totalify</button>
-        <div id="grand_total">Grand Total: ₹0</div>
+            <!-- Totalify Button and Grand Total Display -->
+            <button class="totalify-btn" onclick="totalify()">Totalify</button>
+            <div id="grand_total">Grand Total: ₹0</div>
+        </div>
     </div>
     
     <script src="script.js"></script>
