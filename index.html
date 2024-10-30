@@ -4,12 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kaju Katri Price Calculator</title>
-    <style>
-        body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; margin-top: 50px; }
-        .container { max-width: 300px; width: 100%; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
-        input, select, button { width: 100%; margin: 10px 0; padding: 10px; }
-        #result { font-weight: bold; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -32,29 +27,12 @@
         <input type="number" id="quantity" min="1" placeholder="Enter quantity" required>
 
         <button onclick="calculatePrice()">Calculate Total</button>
+        <button onclick="addToTotal()">Add to Total</button>
 
-        <div id="result"></div>
+        <div id="result">Total Cost: ₹0</div>
     </div>
-
-    <script>
-        async function calculatePrice() {
-            const type = document.getElementById("type").value;
-            const weight = document.getElementById("weight").value;
-            const quantity = parseInt(document.getElementById("quantity").value);
-
-            if (isNaN(quantity) || quantity < 1) {
-                alert("Please enter a valid quantity.");
-                return;
-            }
-
-            const response = await fetch('/calculate', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ type, weight, quantity })
-            });
-            const data = await response.json();
-            document.getElementById("result").innerText = "Total Cost: ₹" + data.total;
-        }
-    </script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
+
