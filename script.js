@@ -74,3 +74,38 @@ function totalify() {
     const grandTotal = Object.values(itemTotals).reduce((acc, curr) => acc + curr, 0);
     document.getElementById("grand_total").innerText = "Grand Total: ₹" + grandTotal;
 }
+
+// Existing code...
+
+async function totalify() {
+    const grandTotal = Object.values(itemTotals).reduce((acc, curr) => acc + curr, 0);
+    document.getElementById("grand_total").innerText = "Grand Total: ₹" + grandTotal;
+
+    // Prepare data to send
+    const username = document.getElementById("username").value.trim();
+    const items = Object.keys(itemTotals).map(type => ({
+        type: type,
+        total: itemTotals[type],
+        history: calculationHistory[username][type] || []
+    }));
+
+    // Send data to the server
+    try {
+        const response = await fetch('https://<your-render-app-url>/calculate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, items }),
+        });
+
+        if (response.ok) {
+            console.log('Calculation saved successfully');
+        } else {
+            console.error('Error saving calculation');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
