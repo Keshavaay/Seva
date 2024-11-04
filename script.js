@@ -4,7 +4,7 @@ const prices = {
     '1_2_regular': 625,
     '1_regular': 1250,
     '1_4_corporate': 375,
-    '1_2_corporate': 675,
+    '1_2_corporate': 650,
     '1_corporate': 1300
 };
 
